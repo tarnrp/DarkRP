@@ -124,11 +124,6 @@ local function DropMoney(ply, args)
 
     local amount = DarkRP.toInt(args)
 
-    local moneyTable = {
-        cmd = "dropmoney",
-        max = GAMEMODE.Config.maxMoneyPiles
-    }
-
     if not amount then
         DarkRP.notify(ply, 1, 4, DarkRP.getPhrase("invalid_x", DarkRP.getPhrase("arguments"), ""))
         return ""
@@ -149,6 +144,11 @@ local function DropMoney(ply, args)
 
         return ""
     end
+
+    local moneyTable = {
+        cmd = "dropmoney",
+        max = GAMEMODE.Config.maxMoneyPiles
+    }
 
     if ply:customEntityLimitReached(moneyTable) then
         DarkRP.notify(ply, 1, 4, DarkRP.getPhrase("limit", "money piles"))
